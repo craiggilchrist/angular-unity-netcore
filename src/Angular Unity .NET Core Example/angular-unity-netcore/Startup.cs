@@ -71,8 +71,6 @@ namespace angular_unity_netcore
 				ContentTypeProvider = provider
 			});
 
-			app.UseStaticFiles();
-
 			if (!env.IsDevelopment())
 			{
 				app.UseSpaStaticFiles(new StaticFileOptions
