@@ -75,7 +75,10 @@ namespace angular_unity_netcore
 
 			if (!env.IsDevelopment())
 			{
-				app.UseSpaStaticFiles();
+				app.UseSpaStaticFiles(new StaticFileOptions
+				{
+					ContentTypeProvider = provider
+				});
 			}
 
 			app.UseRouting();
