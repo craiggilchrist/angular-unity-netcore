@@ -1,0 +1,37 @@
+<h1>More Unity &amp; Angular!</h1>
+<p>An example unity build inside an Angular application hosted by ASP.NET core 3.1 with two way communication.</p>
+<div class="row">
+  <div class="col-3">
+    <h2>Controls</h2>
+    <hr />
+    <ng-container *ngIf="unityIsLoaded; else loading">
+      <p>Current animation: <span class="badge badge-primary">{{animationName}}</span></p>
+      <div class="form-group">
+        <label>Animation control:</label>
+        <button type="button" class="btn-primary btn" (click)="startStopAnimation()">Start&frasl;stop animation</button>
+      </div>
+      <div class="form-group">
+        <label>Camera control:</label>
+        <button type="button" class="btn-primary btn" (click)="startStopCameraLoop()">Start&frasl;stop camera rotation</button>
+      </div>
+      <div class="form-group">
+        <label>Camera distance:</label>
+        <div class="btn-group" role="group">
+          <button type="button" (click)="setCameraDistance(1)" class="btn btn-primary">1m</button>
+          <button type="button" (click)="setCameraDistance(5)" class="btn btn-primary">5m</button>
+          <button type="button" (click)="setCameraDistance(10)" class="btn btn-primary">10m</button>
+          <button type="button" (click)="setCameraDistance(20)" class="btn btn-primary">20m</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <p>Loading... {{progress}}%</p>
+    </ng-template>
+  </div>
+  <div class="col"><unity version="2" #unity></unity></div>
+
+</div>
+
+<hr />
+<p>The tutorial for this is available at <a href="https://gilchr.ist/blog/angular-app-with-unity-in-netcore" title="Hosting Unity WebGL in Angular and ASP.net core">gilchr.ist</a></p>
+<p>The code for this page is available on <a href="https://github.com/craiggilchrist/angular-unity-netcore" title="Get the code on GitHub">GitHub</a></p>

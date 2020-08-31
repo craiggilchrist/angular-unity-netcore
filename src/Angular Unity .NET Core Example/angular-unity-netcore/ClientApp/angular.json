@@ -26,7 +26,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/Build/UnityLoader.js"
+              "src/assets/Build1/UnityLoader.js"
             ]
           },
           "configurations": {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'unity',
@@ -11,12 +11,14 @@ export class UnityComponent implements OnInit {
   progress = 0;
   isReady = false;
 
+  @Input() version: number = 1;
+
   constructor() { }
 
   ngOnInit(): void {
     const loader = (window as any).UnityLoader;
 
-    this.gameInstance = loader.instantiate('gameContainer', '/assets/Build/CraigGilchristUnity.json', {
+    this.gameInstance = loader.instantiate('gameContainer', `/assets/Build${this.version}/CraigGilchristUnity.json`, {
       onProgress: (gameInstance: any, progress: number) => {
         this.progress = progress;
         if (progress === 1) {
@@ -24,6 +26,18 @@ export class UnityComponent implements OnInit {
         }
       }
     });
+  }
+
+  startStopRotating() {
+    this.gameInstance.SendMessage('Director', 'StartStopRotating');
+  }
+
+  startStopAnimation() {
+    this.gameInstance.SendMessage('Director', 'StartStopAnimation');
+  }
+
+  setDistance(distance: number) {
+    this.gameInstance.SendMessage('Director', 'SetDistance', distance);
   }
 
 }
