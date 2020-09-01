@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'unity',
   templateUrl: './unity.component.html',
   styleUrls: ['./unity.component.css']
 })
-export class UnityComponent implements OnInit {
+export class UnityComponent implements OnInit, OnDestroy {
 
   gameInstance: any;
   progress = 0;
@@ -26,6 +26,10 @@ export class UnityComponent implements OnInit {
         }
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.gameInstance.Quit();
   }
 
   startStopRotating() {
